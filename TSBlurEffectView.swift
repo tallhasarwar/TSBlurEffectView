@@ -1,6 +1,6 @@
 //
 //  TSBlurEffectView.swift
-//  Finja
+//  MazeLogics
 //
 //  Created by Tallha Sarwar on 20/05/2021.
 //  Copyright © 2021 Finja Pvt Limited. All rights reserved.
@@ -15,10 +15,15 @@ class TSBlurEffectView: UIVisualEffectView {
     
     var intensity = 1.0
     
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        frame = superview?.bounds ?? CGRect.zero
+        setupBlur()
+    }
+    
     override func didMoveToSuperview() {
         guard let superview = superview else { return }
         backgroundColor = .clear
-        frame = superview.bounds
         setupBlur()
     }
     
